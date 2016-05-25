@@ -13,34 +13,10 @@ Dog, Cat, Woodpecker не содержит явно данных свойств,
 Функция объявляется вне контекста, но вызывается на определенном объекте при помощи call/apply/bind.*/
 
 // task1
+
 // version a)
-function Animal(age, name, sound, region){
-	this.age = age;
-	this.name = name;
-	this.sound = sound;
-	this.region = region;
 
-	this.say = function(){
-		console.log(this.name + " say: " + this.sound + ".");
-	};
-
-	this.goAway = function(){
-		console.log(this.name + " go away.");
-	};
-};
-
-var Dog = new Animal(12, "Rex", "woof woof", "USA");
-var Cat = new Animal(3, "Kitty", "meoooow", "China");
-var Woodpecker = new Animal(2, "Woody", "knock knock", "Ukraine");
-
-Dog.say();
-Cat.say();
-Woodpecker.say();
-Cat.goAway();
-
-// version b)
-
-/*var Animal = function(age, name, sound, region){
+var Animal = function(age, name, sound, region){
 	this.age = age;
 	this.name = name;
 	this.sound = sound;
@@ -60,7 +36,12 @@ var Woodpecker = new Animal(2, "Woody", "knock knock", "Ukraine");
 Dog.say();
 Cat.say();
 Woodpecker.say()
-Dog.goAway();*/
+Dog.goAway();
+
+console.log(' ');
+
+// version b) 
+
 var Animal = {
 	constructor: function(age, name, sound, region){
 		this.age = age;
@@ -81,7 +62,7 @@ var Animal = {
 
 
 var Dog = Object.create(Animal).constructor(12, "Rex", "woof woof", "USA");
-var Kitty = Object.create(Animal).constructor(3, "Kitty", "meoooow", "China");
+var Cat = Object.create(Animal).constructor(3, "Kitty", "meoooow", "China");
 var Woodpecker = Object.create(Animal).constructor(2, "Woody", "knock knock", "Ukraine");
 
 Dog.say();
@@ -89,4 +70,13 @@ Cat.say();
 Woodpecker.say()
 Dog.goAway();
 
-// task2
+console.log(" ");
+
+// task2  На жаль, не розумію що потребується в завданні...
+
+function getType(obj){
+	var toString = Object.prototype.toString;
+	return toString.call(obj);
+};
+
+console.log(getType(Dog));
